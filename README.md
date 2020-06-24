@@ -1,2 +1,2 @@
 # Appium
-testing Douglas application for Android
+Testing Douglas application for Android
