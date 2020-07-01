@@ -1,3 +1,11 @@
+
+"""
+Test create account functionality
+Version 1.0
+Author Joanna Dmochowska
+"""
+
+
 import os
 import unittest
 
@@ -22,10 +30,15 @@ class RegistrationForm(unittest.TestCase):
         desired_caps['udid'] = '192.168.1.12:5555'
         desired_caps['apkPackage'] = 'com.douglas.main'
         desired_caps['apkActivity'] = 'com.douglas.startpage.ui.tabbar.TabbarStartpageActivity'
-        desired_caps['noReset'] = True
+        desired_caps['noReset'] = False
 
         # connect to Appium
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+        self.driver.is_app_installed('com.douglas.main')
+        sleep(5)
+        self.driver.find_element_by_android_uiautomator(
+            'new UiSelector().textContains("ODMÓW")').click()
 
     def tearDown(self):
         self.driver.quit()
@@ -33,11 +46,8 @@ class RegistrationForm(unittest.TestCase):
     # TEST CASES
 
     def test_empty_registration_form(self):
-        '''Login with empty data should fail'''
+        '''Register with empty data should fail'''
 
-        self.driver.is_app_installed('com.douglas.main')
-
-        sleep(5)
         my_douglas_btn = self.driver.find_element_by_id('com.douglas.main:id/actionMyDouglas')
         my_douglas_btn.click()
         sleep(5)
@@ -84,11 +94,8 @@ class RegistrationForm(unittest.TestCase):
     @data(*GetData.get_data(file_path))
     @unpack
     def test_incorrect_email(self,email):
-        """Login with incorrect pemail should fail"""
+        """Register with incorrect email should fail"""
 
-        self.driver.is_app_installed('com.douglas.main')
-
-        sleep(5)
         my_douglas_btn = self.driver.find_element_by_id('com.douglas.main:id/actionMyDouglas')
         my_douglas_btn.click()
         sleep(5)
@@ -125,11 +132,8 @@ class RegistrationForm(unittest.TestCase):
     @data(*GetData.get_data(file_path))
     @unpack
     def test_incorrect_password(self, password, repassword):
-        '''Login with incorrect password should fail'''
+        '''Register with incorrect password should fail'''
 
-        self.driver.is_app_installed('com.douglas.main')
-
-        sleep(5)
         my_douglas_btn = self.driver.find_element_by_id('com.douglas.main:id/actionMyDouglas')
         my_douglas_btn.click()
         sleep(5)
