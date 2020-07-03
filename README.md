@@ -18,7 +18,7 @@ Automation of test cases for the Android mobile application with Appium. In this
 - Appium Python Client: 1.0.1
 - selenium: 3.141.0
 
-###Before you start:
+### Before you start:
 
 Before you run tests, be sure to prepare environment. After that you need to connect do device. If you want connect to Android with adb over TCP, connect your phone by USB cable and run:
 
@@ -53,7 +53,7 @@ To run uiautomatorviewer:
 `make viewer`
 
 
-###Run tests:
+### Run tests:
 
 You can run tests traditional 
 
@@ -72,7 +72,7 @@ For example, run only first and second test:
 
     test_suite = unittest.TestSuite([test_1, test_2])
 
-#### The folder structure:
+### The folder structure:
 
     ├── data
     │   ├── bad_email_account.csv
