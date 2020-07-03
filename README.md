@@ -42,7 +42,7 @@ Sometimes you need to disconnect and connect again, because _make status_ return
 `make connect`
 
 If _make status_ still return offline status, just turnoff WiFi and try turn on again. 
-_make connect_ and check status _make status_.
+_make connect_ and check status.
 
 To run Appium:
 
@@ -63,7 +63,7 @@ or run application more efficiently with makefile. The make utility requires a f
 
 `make tests`
 
-If you don’t want run all tests, but only specific test, modify  test suit on run.py
+If you don’t want run all tests, but only specific test, modify  test suit in run.py
 For example, run only first and second test:
 
     test_1 = unittest.TestLoader().loadTestsFromTestCase(AccountLogin)
