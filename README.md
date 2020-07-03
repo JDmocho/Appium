@@ -18,7 +18,59 @@ Automation of test cases for the Android mobile application with Appium. In this
 - Appium Python Client: 1.0.1
 - selenium: 3.141.0
 
+###Before you start:
 
+Before you run tests, be sure to prepare environment. After that you need to connect do device. If you want connect to Android with adb over TCP, connect your phone by USB cable and run:
+
+`adb tcpip 5555`
+
+Remember to set  ANROID_SDK_PATH  and  DEVICE_IP (phone IP) in Makefile 
+After that you should be able to connect your phone over WiFi.
+
+To connect:
+
+`make connect`
+
+Check if device is connected:
+
+`make status`
+
+Sometimes you need to disconnect and connect again, because _make status_ return that device is offline:
+
+`make disconnect`
+
+`make connect`
+
+If _make status_ still return offline status, just turnoff WiFi and try turn on again. 
+_make connect_ and check status _make status_.
+
+To run Appium:
+
+`make appium`
+
+To run uiautomatorviewer:
+
+`make viewer`
+
+
+###Run tests:
+
+You can run tests traditional 
+
+`python run.py`
+
+or run application more efficiently with makefile. The make utility requires a file, Makefile (or makefile), which defines set of tasks to be executed.
+
+`make tests`
+
+If you don’t want run all tests, but only specific test, modify  test suit on run.py
+For example, run only first and second test:
+
+    test_1 = unittest.TestLoader().loadTestsFromTestCase(AccountLogin)
+    test_2 = unittest.TestLoader().loadTestsFromTestCase(RegistrationForm)
+    test_3 = unittest.TestLoader().loadTestsFromTestCase(ShopDouglas)
+
+    test_suite = unittest.TestSuite([test_1, test_2])
 
 #### The folder structure:
 
