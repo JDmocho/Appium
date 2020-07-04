@@ -69,7 +69,7 @@ class ShopDouglas(unittest.TestCase):
         # pobieramy cene
         self.driver.swipe(50, 1000, 50, 250, 1000)
 
-        el_price =self.driver.find_element_by_id('com.douglas.main:id/basePrice')
+        el_price =self.driver.find_element_by_id('com.douglas.main:id/actualPrice')
 
         price = el_price.text
         print(price)
@@ -77,7 +77,7 @@ class ShopDouglas(unittest.TestCase):
         print(price)
         print(price[0])
         price = price[0].split(' ')
-        price = price[1]
+        price = price[0]
         print(price)
 
 
@@ -101,7 +101,9 @@ class ShopDouglas(unittest.TestCase):
         sleep(5)
 
         price_in_cart =self.driver.find_element_by_android_uiautomator(
-            'new UiSelector().textContains("' + price + '")')
+            'new UiScrollable(new UiSelector()).scrollIntoView('
+            +'new UiSelector().textContains("'+price+'"))')
+
 
         self.assertTrue(price_in_cart)
 
